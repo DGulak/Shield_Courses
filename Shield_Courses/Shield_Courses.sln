@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loodsman_Plugin", "Loodsman_Plugin.csproj", "{E13AD4E4-D80D-40F4-9416-645487565270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loodsman_Frame", "..\Loodsman_Frame\Loodsman_Frame.csproj", "{391CE1A6-AF2A-4B76-9A15-C1DD91EC146A}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Frame_Setup", "..\Frame_Setup\Frame_Setup.vdproj", "{28EC0F3D-B9DC-4F1F-A8C6-70405B4A2CCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loodsman_Service", "..\Loodsman_Service\Loodsman_Service.csproj", "{2B45BAB3-9F41-42FD-979D-200DE1AF8FB0}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Loodsman_Service_Setup", "..\Loodsman_Service_Setup\Loodsman_Service_Setup.vdproj", "{1DB705F1-B7DA-41B8-A67D-5FDAD850B05B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loodsman_DocViewer", "..\Loodsman_DocViewer\Loodsman_DocViewer.csproj", "{E1364D09-6F58-45F0-AA69-70DD24C884CF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Loodsman_DocViewer_Setup", "..\Loodsman_DocViewer_Setup\Loodsman_DocViewer_Setup.vdproj", "{5686B440-5903-4AA9-AAE7-07C2A802E38E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E13AD4E4-D80D-40F4-9416-645487565270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E13AD4E4-D80D-40F4-9416-645487565270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E13AD4E4-D80D-40F4-9416-645487565270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E13AD4E4-D80D-40F4-9416-645487565270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391CE1A6-AF2A-4B76-9A15-C1DD91EC146A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391CE1A6-AF2A-4B76-9A15-C1DD91EC146A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391CE1A6-AF2A-4B76-9A15-C1DD91EC146A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391CE1A6-AF2A-4B76-9A15-C1DD91EC146A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28EC0F3D-B9DC-4F1F-A8C6-70405B4A2CCA}.Debug|Any CPU.ActiveCfg = Debug
+		{28EC0F3D-B9DC-4F1F-A8C6-70405B4A2CCA}.Release|Any CPU.ActiveCfg = Release
+		{2B45BAB3-9F41-42FD-979D-200DE1AF8FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B45BAB3-9F41-42FD-979D-200DE1AF8FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B45BAB3-9F41-42FD-979D-200DE1AF8FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B45BAB3-9F41-42FD-979D-200DE1AF8FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB705F1-B7DA-41B8-A67D-5FDAD850B05B}.Debug|Any CPU.ActiveCfg = Debug
+		{1DB705F1-B7DA-41B8-A67D-5FDAD850B05B}.Release|Any CPU.ActiveCfg = Release
+		{E1364D09-6F58-45F0-AA69-70DD24C884CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1364D09-6F58-45F0-AA69-70DD24C884CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1364D09-6F58-45F0-AA69-70DD24C884CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1364D09-6F58-45F0-AA69-70DD24C884CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5686B440-5903-4AA9-AAE7-07C2A802E38E}.Debug|Any CPU.ActiveCfg = Debug
+		{5686B440-5903-4AA9-AAE7-07C2A802E38E}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0FACF95-B356-40F5-8B50-61B0D817CCAB}
+	EndGlobalSection
+EndGlobal
