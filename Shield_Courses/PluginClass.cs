@@ -1,4 +1,7 @@
 ﻿using Ascon.Plm.Loodsman.PluginSDK;
+using Loodsman;
+using RGiesecke.DllExport;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Shield_Courses
@@ -8,33 +11,33 @@ namespace Shield_Courses
     {
         public void BindMenu(IMenuDefinition menu)
         {
-            menu.AddMenuItem("Новая команда", NewCommandFunction, CheckNewCommand);
+            menu.AddMenuItem("Новая команда", Action, CheckNewCommand);
         }
 
         #region
         public void OnCloseDb()
         {
-            
+
         }
 
         public void OnConnectToDb(INetPluginCall call)
         {
-            
+
         }
 
         public void PluginLoad()
         {
-            
+
         }
 
         public void PluginUnload()
         {
-            
+
         }
 
         #endregion
 
-        private void NewCommandFunction(INetPluginCall call)
+        public void Action(INetPluginCall call)
         {
             MessageBox.Show("Функция вызвана", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

@@ -3,6 +3,8 @@ using Microsoft.Win32;
 using PDMObjects;
 using SecondaryView;
 using System;
+using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -16,6 +18,7 @@ namespace Loodsman_DocViewer
     [ComVisible(true)]
     public class DocViewerClass : TableLayoutPanel, IDocumentViewer2
     {
+        PictureBox _pictureBox;
         CPDMDocument _document;
         ILoodsmanApplication _application;
         #region IDocumentViewer2
@@ -27,12 +30,12 @@ namespace Loodsman_DocViewer
         public void Init(CDBWindow DBWindow, LooApplication LoodsmanApp)
         {
             _application = LoodsmanApp;
-            BackColor = System.Drawing.SystemColors.Control;
+            BackColor = SystemColors.Control;
             this.RowStyles.Clear();
-            this.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
 
             this.ColumnStyles.Clear();
-            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
 
             this.RowCount = 1;
             this.ColumnCount = 1;
@@ -42,21 +45,14 @@ namespace Loodsman_DocViewer
             this.Dock = DockStyle.Fill;
             this.Anchor = AnchorStyles.Top & AnchorStyles.Left;
 
-            Button button = new Button()
+            _pictureBox = new PictureBox()
             {
-                Text = "Click Me",
-                Anchor = AnchorStyles.Top & AnchorStyles.Left,
-                Size = new System.Drawing.Size(100, 25)
+                Dock = DockStyle.Fill,
+                BackColor = SystemColors.Control,
+
             };
 
-            button.Click += Button_Click;
-
-            this.Controls.Add(button);
-        }
-
-        private void Button_Click(object sender, EventArgs e)
-        {
-
+            this.Controls.Add(_pictureBox);
         }
 
         public void Finalize()
@@ -72,11 +68,61 @@ namespace Loodsman_DocViewer
         public void Refresh(CPDMDocument PDMDocument)
         {
             _document = PDMDocument;
+
+            var file = _document.View.Load();
+
+            if (file.EndsWith(".ico"))
+            {
+                var bytes = ReadFile(file);
+                using (MemoryStream ms = new MemoryStream(bytes))
+                {
+                    _pictureBox.Image = new Icon(ms).ToBitmap();
+                }
+            }
+        }
+
+        public static byte[] ReadFile(string filePath)
+        {
+            byte[] buffer;
+            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            try
+            {
+                int length = (int)fileStream.Length;  // get file length
+                buffer = new byte[length];            // create buffer
+                int count;                            // actual number of bytes read
+                int sum = 0;                          // total number of bytes read
+
+                // read until Read method returns 0 (end of the stream has been reached)
+                while ((count = fileStream.Read(buffer, sum, length - sum)) > 0)
+                    sum += count;  // sum is a buffer offset for next reading
+            }
+            finally
+            {
+                fileStream.Close();
+            }
+            return buffer;
         }
 
         public void Command(SecondaryView.DocumentViewerCommands DocumentCommand, int MainWindow)
         {
-            
+            switch (DocumentCommand)
+            {
+                case SecondaryView.DocumentViewerCommands.cmAnnotate:
+                    {
+                        
+                        break;
+                    }
+                case SecondaryView.DocumentViewerCommands.cmCustomize:
+                    break;
+                case SecondaryView.DocumentViewerCommands.cmAbout:
+                    break;
+                case SecondaryView.DocumentViewerCommands.cmDeleteView:
+                    break;
+                case SecondaryView.DocumentViewerCommands.cmHelp:
+                    break;
+                case SecondaryView.DocumentViewerCommands.cmEdit:
+                    break;
+            }
         }
 
         public CPDMDocument Document { get { return _document; } }
@@ -93,11 +139,7 @@ namespace Loodsman_DocViewer
             COMMAND_ABOUT = 4,
             COMMAND_DELETE = 8,
             COMMAND_HELP = 16,
-            ALL = COMMAND_ANNOTATE |
-                COMMAND_CUSTOMIZE | 
-                COMMAND_ABOUT |
-                COMMAND_DELETE |
-                COMMAND_HELP 
+            ALL = COMMAND_ANNOTATE | COMMAND_CUSTOMIZE | COMMAND_ABOUT | COMMAND_DELETE | COMMAND_HELP 
         }
 
         [ComRegisterFunctionAttribute]
